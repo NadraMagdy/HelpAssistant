@@ -9,21 +9,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/back">
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Creat New Account"
-            android:textSize="30sp" />
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="First Name"
-            android:textSize="24sp" />
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText13"
@@ -38,7 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Last Name"
-            android:textSize="24sp" />
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText14"
@@ -53,7 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Phone "
-            android:textSize="24sp" />
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText16"
@@ -68,7 +77,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="User Name"
-            android:textSize="24sp" />
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText17"
@@ -83,7 +94,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email "
-            android:textSize="24sp" />
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText18"
@@ -95,10 +108,13 @@
 
         <Button
             android:id="@+id/button16"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
             android:onClick="SU"
-            android:text="Sign Up " />
+            android:text="Sign Up "
+            android:textStyle="bold" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

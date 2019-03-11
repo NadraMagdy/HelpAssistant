@@ -14,7 +14,12 @@ public class Home extends AppCompatActivity {
     }
 
     public void Setting(View view) {
-        Intent k = new Intent(Home.this,SetupContact.class);
+        Intent k = new Intent(Home.this,Setting.class);
         startActivity(k);
+    }
+
+    public void SC(View view) {
+        Intent K = new Intent(Home.this,SetupContact.class);
+        startActivity(K);
     }
 }
