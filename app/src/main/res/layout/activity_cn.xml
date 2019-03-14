@@ -106,6 +106,26 @@
             android:hint="Enter Your Email "
             android:inputType="textEmailAddress" />
 
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Enter Your Password
+"/>
+
         <Button
             android:id="@+id/button16"
             style="@style/Widget.AppCompat.Button.Colored"

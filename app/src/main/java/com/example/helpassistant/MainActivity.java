@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Login(View view) {
-        Intent i = new Intent(MainActivity.this , Home.class);
-        //startActivity(i);
+        Intent J = new Intent(MainActivity.this , Home.class);
+       // startActivity(J);
+
+
         // Get the Edit Text of the email object
         EditText txtEmail = findViewById(R.id.txtEmail);
         // Get the value entered by the user
