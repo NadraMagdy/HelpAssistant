@@ -67,7 +67,7 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="ForgetPass"
+            android:onClick="ForgetPassword"
             android:text="Forget Password"
             android:textSize="12sp"
             tools:layout_editor_absoluteX="109dp"
@@ -77,7 +77,7 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="CNA"
+            android:onClick="CreateNewAcc"
             android:text="Creat New Account"
             android:textSize="24sp" />
 
