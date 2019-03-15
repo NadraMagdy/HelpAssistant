@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Login(View view) {
-        Intent J = new Intent(MainActivity.this , Home.class);
-       // startActivity(J);
+
+
 
 
         // Get the Edit Text of the email object
@@ -62,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("asd", "---------------- this is response : " + response);
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
+                    UserModel user = UserModel.fromJson(serverResp);
+                    Intent j = new Intent(MainActivity.this , Home.class);
+                    j.putExtra("UserModelObject", user);
+                    startActivity(j);
+
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -78,13 +84,15 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject error) {
                 // Log error message
                 // to help solve any problems
-                Log.e("omg android", statusCode + " " + throwable.getMessage());
+                Log.e("omg f android", statusCode + " " + throwable.getMessage());
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, String err, Throwable throwable) {
+
                 // Log error message
                 // to help solve any problems
-                Log.e("omg android", statusCode + " " + throwable.getMessage());
+                Toast.makeText(getApplicationContext(), err, Toast.LENGTH_LONG).show();
+                Log.e("omg ff android", statusCode + " " + throwable.getMessage());
             }
         });
 
@@ -96,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void CNA(View view) {
-        Intent s = new Intent ( MainActivity.this , CNA.class );
+        Intent s = new Intent ( MainActivity.this , CreateNewAcc.class );
         startActivity(s);
     }
 }
