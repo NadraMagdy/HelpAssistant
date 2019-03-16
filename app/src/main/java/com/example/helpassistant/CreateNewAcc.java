@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,12 +20,12 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 
-public class CNA extends AppCompatActivity {
+public class CreateNewAcc extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cn);
+        setContentView(R.layout.activity_create_new_acc);
     }
 
      public void SU(View view) {
@@ -83,7 +82,7 @@ public class CNA extends AppCompatActivity {
                  try {
                      //JSONObject serverResp = new JSONObject(response.toString());
                      Toast.makeText(getApplicationContext(), "User Created Successfully, Please check your email to activate account.", Toast.LENGTH_LONG).show();
-                     Intent i = new Intent(CNA.this , MainActivity.class);
+                     Intent i = new Intent(CreateNewAcc.this , MainActivity.class);
                      startActivity(i);
                  } catch (Exception e) {
                      // TODO Auto-generated catch block

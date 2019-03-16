@@ -13,7 +13,7 @@ public class ForgetPassword extends AppCompatActivity {
         setContentView(R.layout.activity_forget_password);
     }
 
-    public void CON(View view) {
+    public void btnsend(View view) {
         Intent G = new Intent(ForgetPassword.this, EnterSecurityCode.class );
         startActivity(G);
     }

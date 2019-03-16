@@ -98,12 +98,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void ForgetPass(View view) {
+    public void ForgetPassword(View view) {
+
+
         Intent M = new Intent ( MainActivity.this , ForgetPassword.class );
         startActivity(M);
     }
 
-    public void CNA(View view) {
+    public void CreateNewAcc(View view) {
         Intent s = new Intent ( MainActivity.this , CreateNewAcc.class );
         startActivity(s);
     }

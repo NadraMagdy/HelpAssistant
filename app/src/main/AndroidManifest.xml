@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CNA" />
+        <activity android:name=".CreateNewAcc" />
         <activity android:name=".ApplyNewPassword" />
         <activity android:name=".EnterSecurityCode" />
         <activity android:name=".ForgetPassword" />

@@ -17,16 +17,19 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txtWelcom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Home "
+            android:text="Hi,"
             android:textColor="@android:color/background_dark"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="24sp"
+            android:textStyle="bold"
+
+            />
+
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnHelpMe"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="283dp"
