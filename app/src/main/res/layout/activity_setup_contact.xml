@@ -35,7 +35,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/txtNum1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -52,7 +52,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/txtNum2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -69,19 +69,13 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/txtNum3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Add Number "
                 android:inputType="number" />
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="save"
-                android:text="Save" />
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
@@ -92,7 +86,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/message"
+                android:id="@+id/TxtMessage"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
@@ -101,6 +95,13 @@
 
                 android:textSize="30sp"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="save"
+                android:text="Save" />
         </LinearLayout>
     </ScrollView>
 

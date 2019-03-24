@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+
 public class SetupContact extends AppCompatActivity {
 
     @Override
@@ -14,7 +15,8 @@ public class SetupContact extends AppCompatActivity {
     }
 
     public void save(View view) {
-        Intent j = new Intent(SetupContact.this , Home.class);
-        startActivity(j);
-    }
+        Intent i = new Intent(SetupContact.this , Home.class);
+        startActivity(i);
+
+}
 }
