@@ -35,7 +35,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtNum1"
+                android:id="@+id/txtFirstNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -52,7 +52,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtNum2"
+                android:id="@+id/txtSecondNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -69,7 +69,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtNum3"
+                android:id="@+id/txtThirdNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -86,7 +86,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/TxtMessage"
+                android:id="@+id/txtmessage"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
