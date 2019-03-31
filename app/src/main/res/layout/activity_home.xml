@@ -61,6 +61,15 @@
             android:onClick="Setting"
             android:text="Setting"
             android:textSize="18sp" />
+        <Button
+            android:id="@+id/button10"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:onClick="LO"
+            android:text="Logout"
+            android:textStyle="bold" />
     </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

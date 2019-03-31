@@ -11,6 +11,7 @@ public class UserModel implements Serializable {
     private String UserName;
     private String Email;
     private String Phone;
+    private String UserID;
 
     public String getFirstName(){
         return  this.FirstName;
@@ -32,6 +33,10 @@ public class UserModel implements Serializable {
         return this.Phone;
     }
 
+    public String getUserID(){
+        return  this.UserID;
+    }
+
     // Return an object from JSON
     public static UserModel fromJson(JSONObject jsonObject){
         UserModel user = new UserModel();
@@ -41,6 +46,7 @@ public class UserModel implements Serializable {
             user.LastName = jsonObject.getString("LastName");
             user.Phone = jsonObject.getString("PhoneNumber");
             user.UserName = jsonObject.getString("UserName");
+            user.UserID = jsonObject.getString("UserID");
             return user;
         } catch (JSONException e) {
             e.printStackTrace();
