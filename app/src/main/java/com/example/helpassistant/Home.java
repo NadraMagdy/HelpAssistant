@@ -1,6 +1,7 @@
 package com.example.helpassistant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,11 +18,11 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Intent i = getIntent();
-        UserModel user = (UserModel)i.getSerializableExtra("UserModelObject");
+        //Intent i = getIntent();
+        //UserModel user = (UserModel)i.getSerializableExtra("UserModelObject");
         // Set the Label to the user.getFirstName()
         // "Welcome: " + user.getFirstName();
-
+        SharedPreferences sp = this.getSharedPreferences("UserInfo", MODE_PRIVATE);
         // Handle Long Click Event
         Button helpButton = findViewById(R.id.btnHelpMe);
         helpButton.setOnLongClickListener(new View.OnLongClickListener(){
@@ -32,9 +33,9 @@ public class Home extends AppCompatActivity {
             }
         });
         TextView textView = findViewById(R.id.txtWelcom);
-
-        textView.setText("Hi, " + user.getFirstName());
-
+        if(sp.contains("FirstName")) {
+            textView.setText("Hi, " + sp.getString("FirstName", null));
+        }
     }
 
     public void Setting(View view) {
@@ -50,5 +51,13 @@ public class Home extends AppCompatActivity {
     public void Browesers(View view) {
         Intent BroweserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps"));
         startActivity(BroweserIntent);
+    }
+    public void LO(View view) {
+        SharedPreferences sp = getSharedPreferences("UserInfo",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+        Intent i = new Intent(Home.this , MainActivity.class);
+        startActivity(i);
     }
 }

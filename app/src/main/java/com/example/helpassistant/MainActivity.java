@@ -1,6 +1,7 @@
 package com.example.helpassistant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+    }
+    @Override
+    protected void onStart()
+    {
+        // TODO Auto-generated method stub
+        super.onStart();
+
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        // Check if the user already logged in
+        SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        if(sp.contains("UserID")){
+        Intent j = new Intent(MainActivity.this , Home.class);
+        startActivity(j);
+        }
     }
 
     public void Login(View view) {
@@ -64,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
                     UserModel user = UserModel.fromJson(serverResp);
+                    // Set user information in the shared prefernce
+                    SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+                    SharedPreferences.Editor ed = sp.edit();
+                    ed.putString("UserID", user.getUserID());
+                    ed.putString("Email", user.getEmail());
+                    ed.putString("FirstName", user.getFirstName());
+                    ed.commit();
+
                     Intent j = new Intent(MainActivity.this , Home.class);
                     j.putExtra("UserModelObject", user);
                     startActivity(j);
