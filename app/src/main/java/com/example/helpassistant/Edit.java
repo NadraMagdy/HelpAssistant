@@ -34,7 +34,6 @@ public class Edit extends AppCompatActivity {
     public void save(View view) {
         SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
 
-
         EditText txtUpdateFirstName = findViewById(R.id.txtUpdateFirstName);
         String FirstName = txtUpdateFirstName.getText().toString();
 
@@ -55,7 +54,7 @@ public class Edit extends AppCompatActivity {
             paramsJson.put("LastName", LastName);
             paramsJson.put("PhoneNumber",PhoneNumber);
             paramsJson.put("Password",Password);
-            paramsJson.put("UserID",sp);
+            paramsJson.put("UserID",sp.contains("UserID"));
 
 
         } catch (JSONException e) {
