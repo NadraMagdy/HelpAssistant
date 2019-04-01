@@ -114,11 +114,10 @@ public class Edit extends AppCompatActivity {
 
 
         SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
-        if(sp.contains("UserID"));
         StringEntity jsonObject = null;
         JSONObject paramsJson = new JSONObject();
         try {
-            paramsJson.put("UserID",sp );
+            paramsJson.put("UserID",sp.contains("UserID") );
             } catch (JSONException e) {
             e.printStackTrace();
         }
