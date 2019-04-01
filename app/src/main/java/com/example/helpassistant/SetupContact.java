@@ -1,6 +1,7 @@
 package com.example.helpassistant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,8 @@ public class SetupContact extends AppCompatActivity {
 
     public void save(View view)
     {
+        SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+
         // Get the Edit Text of the firstNumber object
         EditText txtFirstNumber = findViewById(R.id.txtFirstNum);
         // Get the value entered by the user
@@ -50,6 +53,7 @@ public class SetupContact extends AppCompatActivity {
         StringEntity jsonObject = null;
         JSONObject paramsJson = new JSONObject();
         try {
+            paramsJson.put("UserID", sp.contains("UserID"));
             paramsJson.put("FirstNumber",FirstNumber );
             paramsJson.put("SecondNumber", SecondNumber);
             paramsJson.put("ThirdNumber", ThirdNumber);
