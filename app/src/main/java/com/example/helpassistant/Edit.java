@@ -1,6 +1,7 @@
 package com.example.helpassistant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,8 @@ import java.io.UnsupportedEncodingException;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
+
+
 public class Edit extends AppCompatActivity {
 
 
@@ -29,6 +32,8 @@ public class Edit extends AppCompatActivity {
     }
 
     public void save(View view) {
+        SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+
 
         EditText txtUpdateFirstName = findViewById(R.id.txtUpdateFirstName);
         String FirstName = txtUpdateFirstName.getText().toString();
@@ -50,6 +55,8 @@ public class Edit extends AppCompatActivity {
             paramsJson.put("LastName", LastName);
             paramsJson.put("PhoneNumber",PhoneNumber);
             paramsJson.put("Password",Password);
+            paramsJson.put("UserID",sp);
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -104,7 +111,69 @@ public class Edit extends AppCompatActivity {
     }
 
     public void Del(View view) {
-        Intent j = new Intent(Edit.this , Home.class);
-        startActivity(j);
+
+
+        SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        if(sp.contains("UserID"));
+        StringEntity jsonObject = null;
+        JSONObject paramsJson = new JSONObject();
+        try {
+            paramsJson.put("UserID",sp );
+            } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            jsonObject = new StringEntity(paramsJson.toString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        HttpUtils.post("api/user/deleteUser", jsonObject, "application/json", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                Log.d("asd", "---------------- this is response : " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+                    UserModel user = UserModel.fromJson(serverResp);
+                    // Set user information in the shared preference
+                    SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+                    SharedPreferences.Editor ed = sp.edit();
+                    ed.putString("UserID", user.getUserID());
+                    ed.commit();
+
+                    Intent j = new Intent(Edit.this, MainActivity.class);
+                    j.putExtra("UserModelObject", user);
+                    startActivity(j);
+
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                // Pull out the first event on the public timeline
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject error) {
+                // Log error message
+                // to help solve any problems
+                Log.e("omg f android", statusCode + " " + throwable.getMessage());
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String err, Throwable throwable) {
+
+                // Log error message
+                // to help solve any problems
+                Log.e("omg ff android", statusCode + " " + throwable.getMessage());
+            }
+
+
+        });
     }
+
 }
