@@ -2,6 +2,7 @@ package com.example.helpassistant;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,8 +31,11 @@ public class SetupContact extends AppCompatActivity {
 
     public void save(View view)
     {
-        SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
 
+        //We have to write the UserId instead of 15  in the default value but it just for test
+        SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        // Get User ID form SP
+        String userID = sp.getString("UserID", null);
         // Get the Edit Text of the firstNumber object
         EditText txtFirstNumber = findViewById(R.id.txtFirstNum);
         // Get the value entered by the user
@@ -44,6 +48,8 @@ public class SetupContact extends AppCompatActivity {
         EditText txtThirdNumber = findViewById(R.id.txtThirdNum);
         // Get the value entered by the user
         String ThirdNumber = txtThirdNumber.getText().toString();
+
+        String Numbers = FirstNumber +","+ SecondNumber +"," + ThirdNumber ;
         // Get the Edit Text of the Message object
         EditText txtMessage = findViewById(R.id.txtmessage);
         // Get the value entered by the user
@@ -53,11 +59,9 @@ public class SetupContact extends AppCompatActivity {
         StringEntity jsonObject = null;
         JSONObject paramsJson = new JSONObject();
         try {
-            paramsJson.put("UserID", sp.contains("UserID"));
-            
-            paramsJson.put("FirstNumber",FirstNumber );
-            paramsJson.put("SecondNumber", SecondNumber);
-            paramsJson.put("ThirdNumber", ThirdNumber);
+
+            paramsJson.put("UserID",userID);
+            paramsJson.put("Numbers",Numbers );
             paramsJson.put("Message", Message);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -74,6 +78,9 @@ public class SetupContact extends AppCompatActivity {
             public void onSuccess(int statueCode, Header[] headers, JSONObject response) {
                 Log.d("asd", "---------------- this is response : " + response);
                 try {
+                    Intent i = new Intent(SetupContact.this , MainActivity.class);
+                    startActivity(i);
+
                     //JSONObject serverResp = new JSONObject(response.toString());
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
@@ -102,7 +109,6 @@ public class SetupContact extends AppCompatActivity {
             }
         });
 
-        Intent i = new Intent(SetupContact.this , MainActivity.class);
-        startActivity(i);
+
     }
 }

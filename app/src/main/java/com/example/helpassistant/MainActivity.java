@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
                     UserModel user = UserModel.fromJson(serverResp);
-                    // Set user information in the shared prefernce
+                    // Set user information in the shared preference
                     SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
                     SharedPreferences.Editor ed = sp.edit();
                     ed.putString("UserID", user.getUserID());
