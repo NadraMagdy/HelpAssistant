@@ -72,8 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Enter Password"
-            android:inputType="textPassword" />
+            android:hint="Enter Phone Number"
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/textView15"
