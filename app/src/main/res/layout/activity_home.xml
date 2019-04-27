@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="283dp"
             android:background="@drawable/button_red"
+            android:onClick="helpMe"
             android:text="Help Me"
             android:textSize="70dp" />
 

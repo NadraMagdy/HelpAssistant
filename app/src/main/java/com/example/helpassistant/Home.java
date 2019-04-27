@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,7 +25,8 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class Home extends AppCompatActivity {
-
+    // Change to meangingful name such as numberOfPres
+    int i = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,5 +130,74 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onKeyDown(int KeyCode, KeyEvent event) {
+
+        if (KeyCode == KeyEvent.KEYCODE_POWER) {
+            ++i;
+            if (i == 3) {
+                SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
+                String UserID = sp.getString("UserID", null);
+                StringEntity jsonObject = null;
+                JSONObject paramsJson = new JSONObject();
+                try {
+                    paramsJson.put("UserID", UserID);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    jsonObject = new StringEntity(paramsJson.toString());
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                HttpUtils.post("api/user/smsHelper", jsonObject, "application/json", new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                        Log.d("asd", "---------------- this is response : " + response);
+                        try {
+                            JSONObject serverResp = new JSONObject(response.toString());
+
+
+                        } catch (JSONException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                        // Pull out the first event on the public timeline
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject error) {
+                        // Log error message
+                        // to help solve any problems
+                        Log.e("omg f android", statusCode + " " + throwable.getMessage());
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String err, Throwable throwable) {
+
+                        // Log error message
+                        // to help solve any problems
+                        Log.e("omg ff android", statusCode + " " + throwable.getMessage());
+                    }
+
+
+                });
+
+                i = 0;
+
+            }
+            event.startTracking();
+            return true;
+        }
+        return super.onKeyDown(KeyCode,event);
+
+    }
 }
 

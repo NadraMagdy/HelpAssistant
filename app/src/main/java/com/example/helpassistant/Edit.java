@@ -114,11 +114,11 @@ public class Edit extends AppCompatActivity {
 
 
         SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
-        String UserID = sp.getString("UserID", null);
+        String userID = sp.getString("UserID", null);
         StringEntity jsonObject = null;
         JSONObject paramsJson = new JSONObject();
         try {
-            paramsJson.put("UserID",UserID );
+            paramsJson.put("UserID",null );
             } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -135,15 +135,16 @@ public class Edit extends AppCompatActivity {
                 Log.d("asd", "---------------- this is response : " + response);
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
-
-
                     Intent j = new Intent(Edit.this, MainActivity.class);
+
                     startActivity(j);
 
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
+
+
             }
 
             @Override
