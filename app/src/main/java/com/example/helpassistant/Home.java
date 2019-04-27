@@ -80,6 +80,8 @@ public class Home extends AppCompatActivity {
         JSONObject paramsJson = new JSONObject();
         try {
             paramsJson.put("UserID",UserID );
+            paramsJson.put("Numbers", "+201146906983");
+            paramsJson.put("Message", "Hello World");
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -33,9 +33,7 @@ public class UserModel implements Serializable {
         return this.Phone;
     }
 
-    public String getUserID(){
-        return  this.UserID;
-    }
+    public String getUserID(){ return  this.UserID;}
 
     // Return an object from JSON
     public static UserModel fromJson(JSONObject jsonObject){
