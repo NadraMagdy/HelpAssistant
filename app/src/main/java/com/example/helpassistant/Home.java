@@ -202,5 +202,11 @@ public class Home extends AppCompatActivity {
         return super.onKeyDown(KeyCode,event);
 
     }
+
+    public void Nearby(View view) {
+        Intent K = new Intent(Home.this,MapsActivity.class);
+        startActivity(K);
+
+    }
 }
 
