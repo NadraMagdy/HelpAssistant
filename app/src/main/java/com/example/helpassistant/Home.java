@@ -27,6 +27,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 public class Home extends AppCompatActivity {
     // Change to meangingful name such as numberOfPres
     int i = 0;
+    GPSTracker gpsTracker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class Home extends AppCompatActivity {
         helpButton.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View v){
-                Toast.makeText(getApplicationContext(), "Help Help Ya Lahwyyyyyy", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "HELP ME NOW", Toast.LENGTH_LONG).show();
                 return  true;
             }
         });
@@ -49,6 +50,8 @@ public class Home extends AppCompatActivity {
         if(sp.contains("FirstName")) {
             textView.setText("Hi, " + sp.getString("FirstName", null));
         }
+
+
     }
 
     public void Setting(View view) {
@@ -75,16 +78,31 @@ public class Home extends AppCompatActivity {
     }
 
     public void helpMe(View view){
-        
+
 
         SharedPreferences sp = getSharedPreferences("UserInfo", MODE_PRIVATE);
         String UserID = sp.getString("UserID", null);
+        String latitude= "";
+        String longitude="";
         StringEntity jsonObject = null;
         JSONObject paramsJson = new JSONObject();
+        // Get Lat and Lang
+        // GPS Tracker;
+        gpsTracker = new GPSTracker(this);
+        if(gpsTracker.getIsGPSTrackingEnabled()) {
+            latitude = String.valueOf(gpsTracker.latitude);
+            longitude = String.valueOf(gpsTracker.longitude);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "GPS Tracking is not enabled.", Toast.LENGTH_LONG).show();
+        }
         try {
             paramsJson.put("UserID",UserID );
             paramsJson.put("Numbers", "+201146906983");
             paramsJson.put("Message", "Hello World");
+            paramsJson.put("Lat", latitude);
+            paramsJson.put("Long", longitude);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
