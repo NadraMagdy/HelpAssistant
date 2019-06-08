@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -17,16 +20,52 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class SetupContact extends AppCompatActivity {
+    ListView ListView ;
+    ArrayList<String> List;
+    Button butSave;
+    EditText editText;
+    EditText editText2;
+    EditText editText3;
+
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_contact);
+        ListView = (ListView) findViewById(R.id.ListView);
+        butSave=(Button)findViewById(R.id.butSave);
+        editText=(EditText)findViewById(R.id.txtFirstNum);
+        editText2=(EditText)findViewById(R.id.txtSecondNum);
+        editText3=(EditText)findViewById(R.id.txtThirdNum);
+
+
+        List = new ArrayList<String>();
+        arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,List);
+
+
+        butSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                String names=editText.getText().toString();
+                String names2=editText2.getText().toString();
+                String names3=editText3.getText().toString();
+                List.add(names+","+names2+","+names3);
+                ListView.setAdapter(arrayAdapter);
+                arrayAdapter.notifyDataSetChanged();
+
+            }
+        });
+
     }
 
     public void save(View view)

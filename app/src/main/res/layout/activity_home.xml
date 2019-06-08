@@ -78,6 +78,7 @@
             android:onClick="LO"
             android:text="Logout"
             android:textStyle="bold" />
+
     </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
