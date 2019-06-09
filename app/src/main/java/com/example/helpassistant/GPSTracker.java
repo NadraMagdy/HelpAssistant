@@ -129,7 +129,7 @@ public class GPSTracker extends Service implements LocationListener {
         }
         catch (Exception e)
         {
-            //e.printStackTrace();
+            //e.printStackTrace();b
             Log.e(TAG, "Impossible to connect to LocationManager", e);
         }
     }

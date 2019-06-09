@@ -69,6 +69,8 @@
             android:onClick="Nearby"
             android:text="Near me"
             android:textSize="18sp" />
+        
+
         <Button
             android:id="@+id/button10"
             style="@style/Widget.AppCompat.Button.Colored"
@@ -78,6 +80,7 @@
             android:onClick="LO"
             android:text="Logout"
             android:textStyle="bold" />
+
 
     </LinearLayout>
     </ScrollView>

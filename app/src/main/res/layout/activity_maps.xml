@@ -33,12 +33,15 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context="com.example.priyanka.mapsdemo.MapsActivity"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
+        android:layout_height="640dp"
         android:layout_below="@+id/B_hopistals"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="-1dp"
+        tools:context="com.example.priyanka.mapsdemo.MapsActivity" />
 
     <Button
         android:id="@+id/B_hopistals"
@@ -72,17 +75,6 @@
         android:onClick="onClick"
         android:text="Police Station"
         android:layout_toRightOf="@+id/B_FireStation" />
-
-    <Button
-        android:id="@+id/B_to"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/B_PolicStation"
-        android:layout_toEndOf="@+id/B_PolicStation"
-        android:onClick="onClick"
-        android:text="To"
-        android:layout_toRightOf="@+id/B_PolicStation" />
 
 
 </RelativeLayout>

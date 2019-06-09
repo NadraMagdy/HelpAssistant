@@ -210,7 +210,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Showing Nearby Police Station", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.B_to:
+           // case R.id.B_to:
         }
     }
 
